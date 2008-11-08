@@ -1,19 +1,16 @@
-use strict;
-use warnings;
-use ExtUtils::MakeMaker;
+use inc::Module::Install 0.67;
+perl_version '5.008001';
+  
+name        'Net-Cisco-ObjectGroup';
+all_from    'lib/Net/Cisco/ObjectGroup.pm';
 
-WriteMakefile(
-    NAME                => 'Net::Cisco::ObjectGroup',
-    AUTHOR              => 'Oliver Gorwits <oliver.gorwits@oucs.ox.ac.uk>',
-    VERSION_FROM        => 'lib/Net/Cisco/ObjectGroup.pm',
-    ABSTRACT_FROM       => 'lib/Net/Cisco/ObjectGroup.pm',
-    PL_FILES            => {},
-    PREREQ_PM => {
-        'Class::Accessor' => 0.25,
-        'Class::Data::Inheritable' => 0,
-        'UNIVERSAL::require' => 0,
-    },
-    LICENSE             => 'GPL',
-    dist                => { COMPRESS => 'gzip -9f', SUFFIX => 'gz', },
-    clean               => { FILES => 'Net-Cisco-ObjectGroup-*' },
-);
+requires    'Class::Accessor' => 0.25;
+requires    'Class::Data::Inheritable' => 0;
+requires    'UNIVERSAL::require' => 0;
+
+test_requires  'Test::More' => 0;
+test_requires  'Test::Pod' => 0;
+test_requires  'Test::Pod::Coverage' => 0;
+
+WriteAll;
+
